@@ -1,0 +1,80 @@
+<div class="main">
+    <div class="container">
+      <div class="header-container">
+        <h1>Edit Offer</h1>
+      </div>
+      <form (ngSubmit)="OnSubmit()" [formGroup]="editOfferForm">
+        <div class="row">
+          <div formArrayName="productList">
+            <button mat-raised-button type="button" (click)="addProduct()">Add</button>
+            <div *ngIf="productListLength>1">
+              <button mat-raised-button type="button" (click)="removeProduct()">Remove</button>
+            </div>
+            <div *ngFor="let prod of [].constructor(productListLength); let i = index">
+              <mat-form-field class="all">
+                <mat-label>Product {{i+1}}</mat-label>
+                <input matInput formControlName="{{i}}" placeholder="Product {{i + 1}}">
+              </mat-form-field>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="row">
+          <p class="field">
+            <mat-form-field class="all">
+              <mat-label>Discount percent</mat-label>
+              <input
+                matInput
+                placeholder="DiscountPercent"
+                type="number"
+                formControlName="discountPercent"
+              />
+            </mat-form-field>
+          </p>
+        </div>
+        <div class="row">
+          <p class="field">
+            <mat-form-field class="all">
+              <mat-label>Start date</mat-label>
+              <input
+                matInput
+                placeholder="Start date"
+                type="date"
+                formControlName="startDate"
+              />
+            </mat-form-field>
+          </p>
+        </div>
+        <div class="row">
+          <p class="field">
+            <mat-form-field class="all">
+              <mat-label>End date</mat-label>
+              <input
+                matInput
+                placeholder="End date"
+                type="date"
+                formControlName="endDate"
+              />
+            </mat-form-field>
+          </p>
+        </div>
+
+        <div class="options">
+          <button mat-raised-button class="submit-button" (click)="deleteOffer()">
+            <mat-icon fontIcon="delete"></mat-icon>
+            Delete
+          </button>
+          <button
+            mat-raised-button
+            type="submit"
+            class="submit-button"
+            (click)="redirectToMainPage()"
+            [disabled]="!editOfferForm.valid"
+          >
+            Submit
+            <mat-icon fontIcon="check" color="primary"></mat-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

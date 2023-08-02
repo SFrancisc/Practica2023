@@ -1,0 +1,106 @@
+<div class="main">
+  <div class="container">
+    <div class="header-container">
+      <h1>Add user</h1>
+    </div>
+
+    <form (ngSubmit)="OnSubmit()" [formGroup]="AddUserForm">
+      <div class="row">
+        <p class="field">
+          <mat-form-field class="all">
+            <mat-label>Nume</mat-label>
+            <input
+              matInput
+              placeholder="Nume"
+              type="text"
+              formControlName="firstName"
+            />
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="row">
+        <p class="field">
+          <mat-form-field class="all">
+            <mat-label>Prenume</mat-label>
+            <input
+              matInput
+              placeholder="Prenume"
+              type="text"
+              formControlName="lastName"
+            />
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="row">
+        <p class="field">
+          <mat-form-field class="all">
+            <mat-label>Telefon</mat-label>
+            <input
+              matInput
+              placeholder="Telefon"
+              type="string"
+              formControlName="phoneNumber"
+            />
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="row">
+        <p class="field">
+          <mat-form-field class="all">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Email"
+              type="email"
+              formControlName="email"
+            />
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="row">
+        <p class="field">
+          <mat-form-field class="all">
+            <mat-label>Parola</mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="Parola"
+              formControlName="password"
+            />
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="row">
+        <p class="field">
+          <mat-form-field class="all">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="role">
+              <mat-option value="User">User</mat-option>
+              <mat-option value="Admin">Admin</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="options">
+        <button
+          mat-raised-button
+          class="submit-button"
+          (click)="instantRedirect()"
+        >
+          Inchide
+          <mat-icon fontIcon="clear"></mat-icon>
+        </button>
+
+        <button
+          mat-raised-button
+          type="submit"
+          class="submit-button"
+          [disabled]="!AddUserForm.valid"
+        >
+          Finalizeaza
+          <mat-icon fontIcon="check" color="primary"></mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
